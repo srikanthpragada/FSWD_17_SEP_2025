@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount</title>
+    <script>
+        function calculateDiscount() {
+            var txtPrice = document.getElementById("txtPrice")
+            var price = parseInt(txtPrice.value) // convert string to int 
+
+            alert(price)
+        }
+    </script>
+</head>
+<body>
+    <h2>Calculate Discount</h2>
+    Price : <input type="number" id="txtPrice" />
+    <p/>
+    <button onClick="calculateDiscount()">Discount</button>
+</body>
+</html>
