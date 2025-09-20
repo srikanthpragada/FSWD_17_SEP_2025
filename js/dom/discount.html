@@ -8,8 +8,17 @@
         function calculateDiscount() {
             var txtPrice = document.getElementById("txtPrice")
             var price = parseInt(txtPrice.value) // convert string to int 
+            var discount 
 
-            alert(price)
+            if(price > 10000)
+                discount = price * 20 / 100;
+            else
+              if(price > 5000)
+                 discount  = price * 10 / 100;
+              else
+                 discount = price * 5 / 100;
+
+            alert(discount)
         }
     </script>
 </head>
