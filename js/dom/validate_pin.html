@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Validation</title>
+    <script>
+        function validatePin() {
+            let message = document.getElementById("message");
+            let pin = document.getElementById("txtPin").value;
+            let pattern = /^\d{4}$/; // Regular expression for exactly 4 digits
+            if (pattern.test(pin)) {
+                message.innerText = "Valid PIN"
+            } else {
+                message.innerText = "Invalid PIN. Please enter exactly 4 digits."
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>PIN Validation</h2>
+    PIN <input type="number" id="txtPin" maxlength="4" />
+    <span id="message" style="color:red"></span>
+    <p></p>
+    <button onclick="validatePin()">Validate PIN</button>
+
+</body>
+
+</html>

@@ -11,6 +11,7 @@ names[1] = "Java 20"     // update existing
 console.log(names)
 
 names = ["JavaScript", "Java", "Python"]
+
 // for in
 for (let idx in names) { // keys/indexes
     console.log(`Value at ${idx} is ${names[idx]}`)
