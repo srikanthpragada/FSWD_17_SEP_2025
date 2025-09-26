@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Clock</title>
+    <script>
+        var seconds = 0
+        var id = null 
+
+        function startClock() {
+           id = setInterval( () => {
+                seconds ++
+                document.getElementById("seconds").innerHTML = seconds
+            },
+            1000 
+         )
+        }
+    
+        function stopClock() {
+            clearInterval(id)
+        }
+
+        function resetClock() {
+            seconds = 0 
+            startClock()
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Stock Clock</h1>
+    <h1 id="seconds"></h1>
+    <button onClick="startClock()">Start</button>
+    <button onClick="stopClock()">Stop</button>
+    <button onClick="resetClock()">Reset</button>
+</body>
+</html>
