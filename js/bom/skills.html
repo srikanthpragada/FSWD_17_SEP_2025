@@ -25,11 +25,11 @@
             let skill = document.getElementById("txtSkill").value
 
             if (!skills)  // skills is not found
-                skills = skill
+                skills = skill  // first skill 
             else
-                skills += ',' + skill
+                skills += ',' + skill  // second skill onwards, so add to existing skills
 
-            console.log(skills)
+            //console.log(skills)
             localStorage.setItem("skills", skills)
 
             showSkills()

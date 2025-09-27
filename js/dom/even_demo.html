@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Demo</title>
+    <script>
+        function processName(evt) {
+            console.log(evt)
+        }
+
+        function mouseMoved(e) {
+            console.log(e)
+        }
+    </script>
+</head>
+
+<body>
+    Name : <input type="text" id="txtName" />
+    <p></p>
+    <div onmousemove="mouseMoved(event)">
+        This is DIV
+    </div>
+    <button onClick="processName(event)">Process</button>
+</body>
+
+</html>

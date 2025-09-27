@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Info</title>
+    <script>
+        function validateDetails() {
+            var txtName = document.getElementById("txtName")
+
+            if (! /^[A-Za-z ]+$/.test(txtName.value)) {
+                alert("Sorry! Invalid Name!")
+                return
+            }
+
+            var txtMobile = document.getElementById("txtMobile")
+
+            if (! /^\d{10}$/.test(txtMobile.value)) {
+                alert("Sorry! Invalid Mobile Number!")
+                return
+            }
+
+            alert("Validation is successful!")
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Person Information</h1>
+    Name <br />
+    <input type="text" id="txtName" />
+    <p></p>
+    Mobile Number <br />
+    <input type="number" id="txtMobile" />
+    <p></p>
+    <button onClick="validateDetails()">Validate</button>
+</body>
+
+</html>
