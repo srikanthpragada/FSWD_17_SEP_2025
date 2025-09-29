@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function getDetails() {
+            var user = $("#txtUser").val()
+            // Make AJAX request 
+            $.ajax(
+                {
+                    url: `https://api.github.com/users/${user}`,
+                    success: (result) => {
+                        $("#details").text(result.name + " - " + result.location)
+                    },
+                    error: (error) => {
+                        $("#details").text(error.responseJSON.message)
+                    }
+                }
+            )
+        }
+    </script>
+</head>
+
+<body>
+    <h1>GitHub User Info</h1>
+    Username : <input type="text" id="txtUser" /> 
+    <p></p>
+    <button onClick="getDetails()">Get User Details</button>
+    <h1 id="details"></h1>
+</body>
+
+</html>

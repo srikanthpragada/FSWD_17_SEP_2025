@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function getTime() {
+            // Make AJAX request 
+            $.get("https://aisenseapi.com/services/v1/datetime/0000",
+                (result) => { $("#utc").text(result.datetime)  }
+            )
+        }
+    </script>
+</head>
+
+<body>
+    <button onClick="getTime()">Get Time</button>
+    <h1 id="utc"></h1>
+</body>
+
+</html>
