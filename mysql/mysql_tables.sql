@@ -38,6 +38,9 @@ insert into employees(fullname,dept_id,salary) values('Json Hunter','ac',null);
 
 update employees set salary = salary * 1.1 where dept_id = 'sa'
 
+select fullname, salary 
+from employees
+
 select * 
 from employees
 where salary > 500000
@@ -72,6 +75,8 @@ from employees
 order by salary desc
 
 
+select round(1.5)
+
 select date_add(curdate(),interval 1 month)
 
 select datediff(curdate(),'2024-1-1')
@@ -86,7 +91,7 @@ from employees
 select fullname,  mid(fullname, instr(fullname,' ') + 1)
 from employees
 
-select  sum(salary)
+select sum(salary)
 from employees
 
 select avg(salary), min(salary), max(salary)
