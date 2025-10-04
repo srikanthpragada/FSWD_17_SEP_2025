@@ -1,4 +1,4 @@
-// Import numbers.js 
+// Import numbers.js using commonjs module system
 var nm = require("./numbers")
 
 console.log(nm)
