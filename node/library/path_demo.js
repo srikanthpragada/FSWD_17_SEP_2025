@@ -1,5 +1,7 @@
 const path = require('path')
 
+console.log(path.sep)
+
 const test = '/files/test.txt';
 console.log(path.dirname(test)); // folder -> /files
 console.log(path.basename(test)); // filename -> test.txt
