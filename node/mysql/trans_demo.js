@@ -9,7 +9,8 @@ async function test() {
     await con.beginTransaction()
     // changes 
     await con.execute("update employees set salary = 500000 where emp_id = 1")
-    await con.execute("update emp set salary = -500000 where emp_id = 2")
+    console.log('First Update Successful')
+    await con.execute("update employees set salary = 500000 where emp_id = 2")
     await con.commit()
     console.log("Committed!")
   }
@@ -17,6 +18,7 @@ async function test() {
     await con.rollback()
     console.log("Rolledback!")
   }
+  
   await con.end()
 
 }
