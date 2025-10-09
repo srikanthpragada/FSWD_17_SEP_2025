@@ -1,6 +1,6 @@
 const express = require('express') // use express library
 const app = express()
-const port = 3000
+const port = 4000
 
 app.get('/hello',
     (req, res) => {
@@ -10,7 +10,7 @@ app.get('/hello',
          res.send(`<h1 style="color:${color}">Hello ${user}</h1>`)
     }
 )
-
+ 
 app.get('/now',
     (req, res) => {
          var now = new Date() 
