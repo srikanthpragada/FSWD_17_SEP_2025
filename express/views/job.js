@@ -5,7 +5,7 @@ const port = 3000
 app.set('view engine', 'ejs')
 app.set('views','./templates')
 
-app.get('/jobs',
+app.get('/job',
     (req, res) => {
          res.render('job',
               { 
