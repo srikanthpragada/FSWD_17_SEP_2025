@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest</title>
+</head>
+<body>
+    <h2>Interest Calculations</h2>
+    <form action="interestProcess">
+        Amount <br/>
+        <input type="number" name="amount" value="<%=amount%>" required />
+        <p></p>
+
+        Interest Rate From <br/>
+        <input type="number" name="rateFrom"  value="<%=rateFrom%>"  required />
+        To
+        <input type="number" name="rateTo"  value="<%=rateTo%>"  required />
+        <p></p>
+        <button>Submit</button>
+    </form>
+
+    <% 
+       if(interests && interests.length > 0) {  %>
+         <p></p>
+         <table border="1"  cellpadding="5pt">
+           <tr><th>Amount</th><th>Rate</th><th>Interest</th></tr>
+
+         <%for(let entry of interests) { %>
+            <tr>
+                <td style="text-align: right"><%=entry.amount%></td>
+                <td style="text-align: right"><%=entry.rate%></td>
+                <td style="text-align: right"><%=entry.interest%></td>
+            </tr>
+         <%} // for loop %>   
+        </table>
+
+    <%} // if %>
+
+
+</body>
+</html>
