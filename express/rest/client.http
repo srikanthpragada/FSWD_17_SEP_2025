@@ -1,0 +1,47 @@
+
+Get all employees 
+=================
+http://localhost:3000/employees
+
+Get details of one employee
+============================
+http://localhost:3000/employees/2
+
+Get details of non-existing employee
+=====================================
+http://localhost:3000/employees/31
+
+Add new employee
+================
+POST http://localhost:3000/employees HTTP/1.1
+content-type: application/json
+
+{
+    "empname": "test1",
+    "deptid": "it",
+    "salary": 200000
+}
+
+Update employee Details
+=======================
+PUT http://localhost:3000/employees/122 HTTP/1.1
+content-type: application/json
+
+{
+    "empname": "Scott Peck",
+    "deptid": "sa",
+    "salary": 800000
+}
+
+Delete employee
+=======================
+DELETE http://localhost:3000/employees/15 HTTP/1.1
+ 
+
+Employees by Dept
+===================
+http://localhost:3000/empbydept/sa
+
+Search Employees 
+================ 
+http://localhost:3000/search/t
