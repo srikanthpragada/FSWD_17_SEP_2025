@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import ListProducts from './props/ListProducts';
+import SkillsRatings from './state/SkillsRatings';
 
 
 let products = [ 
@@ -13,7 +13,7 @@ let products = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ListProducts  products = {products} />
+     <SkillsRatings />
   </React.StrictMode>
 );
 
