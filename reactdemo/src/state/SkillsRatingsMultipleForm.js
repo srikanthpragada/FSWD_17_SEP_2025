@@ -3,29 +3,43 @@ import React, { useState } from 'react'
 // Component to add new skill 
 function AddSkill({ skills, addSkill }) {
     let [message, setMessage] = useState("")
-    function addNewSkill() {
-        let skill = document.getElementById("txtSkill").value
-        let rating = document.getElementById("txtRating").value
+    let [skill, setSkill] = useState({ skillName: '', rating: 5 })
 
+    // process form submission
+    function addNewSkill(evt) {
+        evt.preventDefault()
         // check whether new skill is already present 
-        var found = skills.find((s, idx) => s.skill === skill)
+        var found = skills.find((s, idx) => s.skill === skill.skillName)
         if (found)  // duplicate skill
             setMessage("Sorry! Duplicate")
         else {
             // call a function in parent and pass skill object 
-            addSkill({ skill: skill, rating: rating })
+            addSkill({skill: skill.skillName, rating: skill.rating})
+            //addSkill( {...skill, skill : skill.sillName})
             setMessage("")
         }
+    }
+
+    function updateSkillName(evt) {
+        setSkill({ ...skill, skillName: evt.target.value })
+    }
+
+    function updateRating(evt) {
+        setSkill({ ...skill, rating: evt.target.value })
     }
 
     return (
         <>
             <h2>Add Skill</h2>
-            SKill: <input type="text" id="txtSkill"  />
-            Rating: <input type="number" id="txtRating"   /> 
-            <span style={{color: 'red'}}>{message}</span>
-            <p></p>
-            <button onClick={addNewSkill}>Add</button>
+            <form onSubmit={addNewSkill}>
+                SKill: <input type="text" required 
+                       value={skill.skillName} onChange={updateSkillName} />
+                Rating: <input type="number" required min='1' max='5'
+                        value={skill.rating} onChange={updateRating} />
+                <span style={{ color: 'red' }}>{message}</span>
+                <p></p>
+                <button>Add</button>
+            </form>
         </>
     )
 }
@@ -71,7 +85,7 @@ function ListSkills({ skills, deleteSkill }) {
     )
 }
 
-export default function SkillsRatingsMultiple() {
+export default function SkillsRatingsMultipleForm() {
     let [skills, setSkills] = useState([])
 
     function addOneSkill(skill) {

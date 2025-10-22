@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // Component to add new skill 
-function AddSkill({ skills, addSkill }) {
+function AddSkill({ skills, setSkills }) {
     let [message, setMessage] = useState("")
     function addNewSkill() {
         let skill = document.getElementById("txtSkill").value
@@ -13,7 +13,7 @@ function AddSkill({ skills, addSkill }) {
             setMessage("Sorry! Duplicate")
         else {
             // call a function in parent and pass skill object 
-            addSkill({ skill: skill, rating: rating })
+            setSkills([...skills, {skill : skill, rating : rating}])
             setMessage("")
         }
     }
@@ -30,8 +30,7 @@ function AddSkill({ skills, addSkill }) {
     )
 }
 
-// List skills 
-function ListSkills({ skills, deleteSkill }) {
+function ListSkills({ skills, setSkills }) {
 
     function deleteCurrentSkill(e, idx) {
         e.preventDefault()
@@ -39,7 +38,7 @@ function ListSkills({ skills, deleteSkill }) {
             return
 
         // Delete element with index idx 
-        deleteSkill(idx)
+        setSkills(skills.filter((v, i) => i !== idx))
     }
 
     return (
@@ -71,26 +70,17 @@ function ListSkills({ skills, deleteSkill }) {
     )
 }
 
-export default function SkillsRatingsMultiple() {
+export default function SkillsRatingsMultiple2() {
     let [skills, setSkills] = useState([])
-
-    function addOneSkill(skill) {
-        // Add new skill object to existing skills 
-        setSkills([...skills, skill])
-    }
-
-    function deleteOneSkill(idx) {
-        setSkills(skills.filter((v, i) => i !== idx))
-    }
 
     return (
         <>
-            <AddSkill skills={skills} addSkill={addOneSkill} />
+            <AddSkill skills={skills} setSkills={setSkills} />
             {
                 skills.length > 0 ?
                     <>
                         <hr />
-                        <ListSkills skills={skills} deleteSkill={deleteOneSkill} />
+                        <ListSkills skills={skills} setSkills={setSkills} />
                     </>
                     : ''
             }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import SkillsRatingsMultiple from './state/SkillsRatingsMultiple';
+import SkillsRatingsMultipleForm2 from './state/SkillsRatingsMultipleForm2';
 
 
 let products = [ 
@@ -13,7 +13,7 @@ let products = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <SkillsRatingsMultiple />
+     <SkillsRatingsMultipleForm2 />
   </React.StrictMode>
 );
 
