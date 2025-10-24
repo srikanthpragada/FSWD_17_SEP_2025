@@ -1,5 +1,4 @@
 import React from 'react'
-
 const MyContext = React.createContext();
 
 export default class ClassContextDemo extends React.Component {
@@ -25,6 +24,7 @@ class Child extends React.Component {
         )
     }
 }
+
 class GrandChild extends React.Component {
     static contextType = MyContext;
     render() {
