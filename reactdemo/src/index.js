@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Cart from './state/Cart';
+import FetchDemo from './ajax/FetchDemo';
+import FetchDemo2 from './ajax/FetchDemo2';
 
 
 let products = [ 
@@ -13,7 +14,7 @@ let products = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <Cart />
+     <FetchDemo2  />
   </React.StrictMode>
 );
 

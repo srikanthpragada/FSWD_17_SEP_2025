@@ -23,37 +23,53 @@ export default function Cart() {
 
     function addToCart(e) {
         e.preventDefault()
-        // Take product name and price based on id
-        let cartItem = {
-            name: products[product.id].productName,
-            price: products[product.id].price,
-            qty: parseInt(product.qty),
-            amount: product.qty * products[product.id].price
+        let name = products[product.id].productName
+        let qty = parseInt(product.qty)
+        let price = products[product.id].price
+
+        // check whether product is already in the cart 
+        let item = shoppingCart.find((p, idx) => p.name === name)
+
+        // if item is found then update qty
+        if (item) {
+            // delete old item from cart
+            let newShoppingCart = shoppingCart.filter( (p, idx) => p.name !== name)
+            
+            // add new item with new qty and amount 
+            item.qty += qty;
+            item.amount = item.qty * item.price 
+            setShoppingCart([...newShoppingCart, item])
         }
-
-        setShoppingCart([...shoppingCart, cartItem])
-        console.log(shoppingCart)
-
+        else {
+            // Take product name and price based on id
+            let cartItem = {
+                name: name,
+                price: price,
+                qty: qty,
+                amount: qty * price
+            }
+            setShoppingCart([...shoppingCart, cartItem])
+        }
     }
 
     function deleteItem(idxToDelete) {
-        setShoppingCart(  shoppingCart.filter( (p, idx) =>  idx != idxToDelete ))
+        setShoppingCart(shoppingCart.filter((p, idx) => idx != idxToDelete))
     }
 
     function getTotalAmount() {
         let total = 0
-        for(let item of shoppingCart) 
-             total += item.amount 
+        for (let item of shoppingCart)
+            total += item.amount
 
-        return total 
+        return total
     }
 
     function getTotalQty() {
         let total = 0
-        for(let item of shoppingCart) 
-             total += item.qty
+        for (let item of shoppingCart)
+            total += item.qty
 
-        return total 
+        return total
     }
 
 
@@ -67,7 +83,7 @@ export default function Cart() {
                         products.map((p, idx) => <option key={idx} value={idx}>{p.productName}</option>)
                     }
                 </select>
-                Quantity : <input type="number" value={product.qty} onChange={updateQty} />
+                Quantity : <input type="number" min="1" value={product.qty} onChange={updateQty} />
                 &nbsp;
                 <button>Add To Cart</button>
             </form>
