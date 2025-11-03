@@ -10,38 +10,47 @@ export default function ListRepos() {
         $.ajax('https://api.github.com/users/gvanrossum/repos',
             {
                 method: 'get',
-                success: (data) => setRepos(data), // update state with response
+                success: (response) => setRepos(response), // update state with response
                 error:
-                    () => {
+                    (ex) => {
                         setRepos(null); // clear output on error 
+                        alert(ex.responseJSON.message)
                     }
             }
         )
+
+        // Clean up function is to be returned
+        return () => {
+            console.log('Clean Up Function')
+        }
     }
 
     return (
         <>
             <h1>List of Repos</h1>
-            <table className="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Repo Name</th>
-                        <th>Description</th>
-                        <th>Created On</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {
-                        repos.map((r, idx) => <tr key={idx}>
-                            <td>{r.name}</td>
-                            <td>{r.description}</td>
-                            <td>{r.created_at}</td>
+            {repos ?
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Repo Name</th>
+                            <th>Description</th>
+                            <th>Created On</th>
                         </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                        {
+                            repos.map((r, idx) => <tr key={idx}>
+                                <td>{r.name}</td>
+                                <td>{r.description}</td>
+                                <td>{r.created_at}</td>
+                            </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+                : <h4>Sorry! Could not get details!</h4>
+            }
 
         </>
     )

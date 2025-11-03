@@ -29,7 +29,8 @@ export default function GitUserInfo() {
         <>
             <h1>Git User Info</h1>
             <form onSubmit={getDetails}>
-                Username : <input type="text" required  value={username}  onChange={updateUsername}/>
+                Username : <input type="text" required  value={username} 
+                                  onChange={updateUsername}/>
                 <p></p>
                 <button>Get Info</button>
             </form>
@@ -39,7 +40,8 @@ export default function GitUserInfo() {
                     <h2>Name : {details.name}</h2>
                     <h3>Company : {details.company}</h3>
                     <h3>Location : {details.location}</h3>
-                    <img src={details.avatar_url} style={{width:'300px', height : "300px"}}/>
+                    <img src={details.avatar_url} 
+                         style={{width:'300px', height : "300px"}}/>
                 </div>
                     : done && <h3>Sorry! Couldn't get details!</h3>
             }

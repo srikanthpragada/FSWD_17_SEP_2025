@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import FetchDemo from './ajax/FetchDemo';
-import FetchDemo2 from './ajax/FetchDemo2';
+import DigitalClock from './state/DigitalClockCC';
 
 
 let products = [ 
@@ -14,7 +13,7 @@ let products = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <FetchDemo2  />
+     <DigitalClock />
   </React.StrictMode>
 );
 
