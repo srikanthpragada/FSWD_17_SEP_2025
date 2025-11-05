@@ -35,7 +35,7 @@ function Layout() {
     return (
         <div className="container">
             <h2>Routing Demo</h2>
-            <nav className="nav navbar-expand-sm bg-danger">
+            <nav className="nav navbar-expand-sm bg-primary">
                 <Link className="nav-link text-white" to="/first">First</Link>
                 <Link className="nav-link text-white" to="/second">Second</Link>
                 <Link className="nav-link text-white" to="/contact/phone">Phone</Link>

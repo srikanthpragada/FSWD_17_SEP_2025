@@ -1,0 +1,52 @@
+// get all books
+http://localhost:8888/books
+
+// Search books by title
+http://localhost:8888/books/search?title=to
+
+// get books by author
+http://localhost:8888/books/author?author=Peter Thiel
+
+// Get authors 
+http://localhost:8888/authors
+
+// Get book by book id
+http://localhost:8888/books/4
+
+// Get book using non-existing id 
+http://localhost:8888/books/20
+
+// Post new book
+POST http://localhost:8888/books HTTP/1.1
+content-type: application/json
+
+{
+     "title": "New new thing",   
+     "author": "Micheal Lewis",
+     "price" : 500
+}
+
+// Post new book with error 
+POST http://localhost:8888/books HTTP/1.1
+content-type: application/json
+
+{
+     "name": "New new thing",   
+     "author": "Micheal Lewis",
+     "price": 1200
+}
+
+
+// Update a book
+PUT http://localhost:8888/books/16 HTTP/1.1
+content-type: application/json
+
+{
+     "title": "New new thing",   
+     "author": "Micheal Lewis",
+     "price": 900
+}
+
+
+//Delete a book
+DELETE http://localhost:8888/books/7 HTTP/1.1
