@@ -1,7 +1,6 @@
-//var express = require('express');
 var db = require("./booksDatabase")
 
-async function getBooks(req,res) {
+async function getBooks(req, res) {
   try {
     let books = await db.getBooks()
     res.json(books)
@@ -11,7 +10,7 @@ async function getBooks(req,res) {
   }
 }
 
-// Expects a querystring with author field  ?author=authorname
+// Expects a querystring with author field  /books/author?author=authorname
 async function getBooksByAuthor(req, res) {
   try {
     let books = await db.getBooksByAuthor(req.query.author)
@@ -22,12 +21,12 @@ async function getBooksByAuthor(req, res) {
   }
 }
 
-async function getBookById(req,res) {
+async function getBookById(req, res) {
   try {
     let book = await db.getBookById(req.params.id)
-    if (book)
+    if (book)  // book is found
       res.json(book)
-    else
+    else   // book is not found 
       res.status(404).send("Book Id Not Found!")
   }
   catch (err) {
@@ -35,7 +34,7 @@ async function getBookById(req,res) {
   }
 }
 
-// Querystring - title 
+// Querystring - /books/search?title=Programming
 async function searchBooks(req, res) {
   try {
     let books = await db.searchBooks(req.query.title)
@@ -50,7 +49,7 @@ async function searchBooks(req, res) {
 async function addBook(req, res) {
   try {
     if (!validateBook(req.body)) {
-      res.status(400).send("Invalid Book Data!")
+      res.status(400).send("Invalid Book Data!")  // bad request 
       return
     }
     await db.addBook(req.body)
@@ -68,7 +67,7 @@ async function updateBook(req, res) {
       res.status(400).send("Invalid Book Data!")
       return
     }
-    
+
     updated = await db.updateBook(req.params.id, req.body)
     if (updated)
       res.status(200).send("Book Updated!")
@@ -83,7 +82,7 @@ async function updateBook(req, res) {
 async function deleteBook(req, res) {
   try {
     let deleted = await db.deleteBook(req.params.id)
-    if(deleted)
+    if (deleted)
       res.status(204).send("Book Deleted!")
     else
       res.status(404).send("Book Id Not Found!")
@@ -107,8 +106,8 @@ function validateBook(book) {
   if (!book.title || !book.author || !book.price)
     return false
   if (book.price < 0)
-    return false 
-  
+    return false
+
   return true
 }
 
@@ -123,4 +122,4 @@ module.exports = {
   getAuthorsBooksCount,
   getBooksByAuthor
 }
- 
+

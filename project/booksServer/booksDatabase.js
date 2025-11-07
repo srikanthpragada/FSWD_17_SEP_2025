@@ -61,7 +61,8 @@ async function deleteBook(id) {
 
 
 async function getAuthorsBooksCount() {
-    var [rows, fields] = await pool.query("select author, count(*) as bookCount from books group by author order by author")
+    var [rows, fields] = await pool.query
+        ("select author, count(*) as bookCount from books group by author order by author")
     return rows;
 }
 
